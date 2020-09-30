@@ -143,11 +143,15 @@
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\WaypointProgressTracker.cs" />
+    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\EmitterPositionController.cs" />
+    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\FXDemoController.cs" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
+    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\Projectors\Shaders\ProjectorLight.shader" />
+    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Emissive Diffuse.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
@@ -170,6 +174,7 @@
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Adaptation.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\LensFlareCreate.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlur.shader" />
+    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump Cutout.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ScreenSpaceAmbientObscurance.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\CreaseApply.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA3Console.shader" />
@@ -199,6 +204,7 @@
     <None Include="Assets\SKY city lite\Foliage\Materials\Vegetation.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularSmooth.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\SeparableBlurPlus.shader" />
+    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Standard Diffuse Bump.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\MotionBlur.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableBlur.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBlur.shader" />
@@ -215,6 +221,7 @@
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
+    <None Include="Assets\Winter Zone Mini 1.0\readme.txt" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
