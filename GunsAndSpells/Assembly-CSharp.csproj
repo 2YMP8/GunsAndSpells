@@ -143,8 +143,9 @@
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\TimedObjectDestructor.cs" />
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\SKY city lite\Standard Assets\Utility\WaypointProgressTracker.cs" />
-    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\EmitterPositionController.cs" />
-    <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\FXDemoController.cs" />
+    <Compile Include="Assets\Scripts\Init_LoadPreferences.cs" />
+    <Compile Include="Assets\Scripts\MenuController.cs" />
+    <Compile Include="Assets\SpeedTutor_Full_Menu_System\GUI Elements\UI_BrightnessShader\Brightness.cs" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
     <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
@@ -211,6 +212,7 @@
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BrightPassFilter2.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\TessellationShaders\Shaders\BumpedSpecularDisplacement.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\PrepareSunShaftsBlur.shader" />
+    <None Include="Assets\SpeedTutor_Full_Menu_System\GUI Elements\UI_BrightnessShader\BrightnessEffect.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
@@ -221,7 +223,6 @@
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
-    <None Include="Assets\Winter Zone Mini 1.0\readme.txt" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\EdgeDetectNormals.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
     <None Include="Assets\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
