@@ -10,20 +10,31 @@ public class AgentController : MonoBehaviour
     public float rotationSpeed, movementSpeed, gravity = 20;
     Vector3 movementVector = Vector3.zero;
     float desireRotationAngle = 0;
+    private float inputVerticalDirection = 0;
+   
     // Start is called before the first frame update
     void Start()
     {
         anm = GetComponent<Animator>();
         controller = GetComponent<CharacterController>();
+        
     }
 
     public void HandleMovement(Vector2 input)
     {
         if (controller.isGrounded)
         {
-            if(input.y > 0)
+            if(input.y != 0)
             {
-                movementVector = transform.forward * movementSpeed;
+                if(input.y > 0)
+                {
+                    inputVerticalDirection = Mathf.CeilToInt(input.y);
+                }
+                else
+                {
+                    inputVerticalDirection = Mathf.FloorToInt(input.y);
+                }
+                movementVector = input.y * transform.forward * movementSpeed;
             }
             else
             {
@@ -36,13 +47,13 @@ public class AgentController : MonoBehaviour
     public void HanleMovementDirection(Vector3 direction)
     {
         desireRotationAngle = Vector3.Angle(transform.forward, direction);
-        var crossProduct = Vector3.Cross(transform.forward, direction).y;
+        var crossProduct = Vector3.Cross(transform.forward , direction).y;
         if (crossProduct < 0)
         {
             desireRotationAngle *= -1;
         }
     }
-
+    
     void RotateAgent()
     {
         if (desireRotationAngle > 10 || desireRotationAngle < -10)
@@ -50,15 +61,15 @@ public class AgentController : MonoBehaviour
             transform.Rotate(Vector3.up * desireRotationAngle * rotationSpeed * Time.deltaTime);
         }
     }
-    private float SetCorrectAnimation()
+    private float SetCorrectAnimation(float inputVerticalDirection)
     {
         float currentAnimationSpeed = anm.GetFloat("move");
         if(desireRotationAngle > 10 || desireRotationAngle < -10)
         {
-            if(currentAnimationSpeed < 0.2f)
+            if(Mathf.Abs(currentAnimationSpeed) < 0.2f)
             {
-                currentAnimationSpeed += Time.deltaTime * 2;
-                currentAnimationSpeed = Mathf.Clamp(currentAnimationSpeed, 0, 0.2f);
+                currentAnimationSpeed += inputVerticalDirection *  Time.deltaTime * 2;
+                currentAnimationSpeed = Mathf.Clamp(currentAnimationSpeed, -0.2f, 0.2f);
             }
             anm.SetFloat("move", currentAnimationSpeed);
         }
@@ -66,25 +77,23 @@ public class AgentController : MonoBehaviour
         {
             if (currentAnimationSpeed < 1)
             {
-                currentAnimationSpeed += Time.deltaTime * 2;
+                currentAnimationSpeed += inputVerticalDirection * Time.deltaTime * 2;
             }
-            else
-            {
-                currentAnimationSpeed = 1;
-            }
-            anm.SetFloat("move", currentAnimationSpeed);
+            
+            anm.SetFloat("move",Mathf.Clamp( currentAnimationSpeed, -1,1));
         }
-        return currentAnimationSpeed;
+        return Mathf.Abs (currentAnimationSpeed);
     }
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            anm.SetTrigger("isJumping");
-        }
 
-        if (Input.GetKey(KeyCode.LeftShift))
+
+        
+
+       
+
+       if (Input.GetKey(KeyCode.LeftShift))
         {
             Debug.Log("Run");
             anm.SetBool("isRunning", true);
@@ -97,12 +106,17 @@ public class AgentController : MonoBehaviour
         {
             if(movementVector.magnitude > 0)
             {
-                var animationSpeedMultiplier = SetCorrectAnimation();
+                var animationSpeedMultiplier = SetCorrectAnimation(inputVerticalDirection);
                 RotateAgent();
                 movementVector *= animationSpeedMultiplier;
             }
         }
-        movementVector.y -= gravity;
+        if (controller.isGrounded && Input.GetButton("Jump"))
+        {
+            anm.SetTrigger("isJumping");
+            movementVector.y = 1100 * Time.deltaTime;
+        }
+        movementVector.y -= gravity * 2 ;
         controller.Move(movementVector * Time.deltaTime);
     }
 }
