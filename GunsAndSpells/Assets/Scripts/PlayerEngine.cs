@@ -4,11 +4,17 @@ using UnityEngine;
 using System;
 public class PlayerEngine : MonoBehaviour, Iinput
 {
+    private float _platformBoardForce;
+    private Rigidbody rb;
+
     public Action<Vector2> OnMovementInput { get; set; }
     public Action<Vector3> OnMovementDirectionInput { get; set; }
 
     private void Start()
     {
+        _platformBoardForce = 5000;
+        rb = GetComponent<Rigidbody>();
+        
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -34,4 +40,12 @@ public class PlayerEngine : MonoBehaviour, Iinput
         OnMovementInput?.Invoke(input);
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("JumpingBoard"))
+        {
+            rb.AddForce(transform.up * _platformBoardForce * Time.deltaTime);
+            print("aaa");
+        }
+    }
 }
