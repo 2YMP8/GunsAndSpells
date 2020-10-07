@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Imports\CameraShakeFX\Scripts\StressReceiver.cs" />
+    <Compile Include="Assets\Imports\CameraShakeFX\Scripts\TraumaInducer.cs" />
     <Compile Include="Assets\Imports\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\FirstPersonController.cs" />
     <Compile Include="Assets\Imports\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\HeadBob.cs" />
     <Compile Include="Assets\Imports\SKY city lite\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" />
@@ -150,6 +152,7 @@
     <Compile Include="Assets\Scripts\Iinput.cs" />
     <Compile Include="Assets\Scripts\Init_LoadPreferences.cs" />
     <Compile Include="Assets\Scripts\MenuController.cs" />
+    <Compile Include="Assets\Scripts\MineCollision.cs" />
     <Compile Include="Assets\Scripts\PlayerEngine.cs" />
     <Compile Include="Assets\Scripts\PlayerMoveWithAnm.cs" />
     <Compile Include="Assets\Scripts\PlayerMovement.cs" />
@@ -157,7 +160,6 @@
     <Compile Include="Assets\Winter Zone Mini 1.0\Scripts\FXDemoController.cs" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
     <None Include="Assets\Imports\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
-    <None Include="Assets\20 Logos PSD\Fonts\chunkfiveex\SIL Open Font License 1.1.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\GlobalFog.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\VortexEffect.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrain.shader" />
@@ -165,7 +167,6 @@
     <None Include="Assets\Imports\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Emissive Diffuse.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\Projectors\Shaders\ProjectorMultiply.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\DLAA.shader" />
-    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Emissive Diffuse.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\frag_ao.cginc" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAAPreset3.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\CameraMotionBlurDX11.shader" />
@@ -195,7 +196,6 @@
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\VignetteShader.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\MotionBlurClear.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\GlassRefraction\Shaders\GlassStainedBumpDistort.shader" />
-    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump Cutout.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\SepiaToneEffect.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ColorCorrection3DLut.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\SimpleClear.shader" />
@@ -210,11 +210,8 @@
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ToonShading\Shaders\ToonLit.shader" />
     <None Include="Assets\Imports\MagicWorldPlatformer\Description.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\MobileBloom.shader" />
-    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlendForBloom.shader" />
-    <None Include="Assets\MagicWorldPlatformer\Description.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfField34.shader" />
-    <None Include="Assets\20 Logos PSD\Fonts\kaushanscript\SIL Open Font License.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ToonShading\Shaders\ToonBasic.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldDX11.shader" />
     <None Include="Assets\Imports\SKY city lite\Foliage\Materials\Vegetation.shader" />
@@ -230,14 +227,10 @@
     <None Include="Assets\Imports\SpeedTutor_Full_Menu_System\GUI Elements\UI_BrightnessShader\BrightnessEffect.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ShowAlphaChannel.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\GrayscaleEffect.shader" />
-    <None Include="Assets\20 Logos PSD\Fonts\peacesans\FREE FONT LICENSE.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\ChromaticAberrationShader.shader" />
-    <None Include="Assets\20 Logos PSD\Fonts\molot\molot-eula.txt" />
-    <None Include="Assets\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Standard Diffuse Bump.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseAndGrainDX11.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\SeparableWeightedBlurDof34.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Characters\RollerBall\RollerBallGuidelines.txt" />
-    <None Include="Assets\20 Logos PSD\Fonts\Read Me.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\BlendModesOverlay.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ToonShading\Shaders\ToonBasicOutline.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_DepthOfField\DepthOfFieldScatter.shader" />
@@ -247,7 +240,6 @@
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderRGB.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\FXAA2.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\NoiseEffectShaderYUV.shader" />
-    <None Include="Assets\20 Logos PSD\Fonts\firasansheavy\SIL Open Font License.txt" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Contrast Stretch\Luminance.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_BloomAndFlares\BlurAndFlares.shader" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\_Antialiasing\NFAA.shader" />
