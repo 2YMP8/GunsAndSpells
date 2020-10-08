@@ -1,0 +1,41 @@
+﻿<Properties StartupConfiguration="{08E06D99-E21E-2422-00EC-6DA979F0BADC}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/YmpScripts/AvatarEngine.cs">
+    <Files>
+      <File FileName="../../../UnityProjects/‏‏‏‏The Janitor 3D - Mini(V1.0)/Assets/Rotem's Project/Scripts/Rotem's Scripts/PlayrEngine.cs" Line="408" Column="110" />
+      <File FileName="Assets/Scripts/PlayerMoveWithAnm.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/PlayerEngine.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/AgentMovement.cs" />
+      <File FileName="Assets/Scripts/AgentController.cs" Line="1" Column="1" />
+      <File FileName="Assets/Scripts/Iinput.cs" />
+      <File FileName="Assets/YmpScripts/AvatarEngine.cs" Line="88" Column="56" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="GunsAndSpells" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="Imports" expanded="True">
+                <Node name="SpeedTutor_Full_Menu_System" expanded="True">
+                  <Node name="GUI Elements" expanded="True">
+                    <Node name="UI_BrightnessShader" expanded="True" />
+                  </Node>
+                </Node>
+              </Node>
+              <Node name="Scripts" expanded="True" />
+              <Node name="YmpScripts" expanded="True">
+                <Node name="AvatarEngine.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="4f0ec9d8-2216-4105-9725-7dccdf9e4f73" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
