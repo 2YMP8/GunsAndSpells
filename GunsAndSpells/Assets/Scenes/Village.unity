@@ -73661,6 +73661,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Mine
       objectReference: {fileID: 0}
+    - target: {fileID: 189510, guid: c95ed669496457245b94a76f843f0381, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 446306, guid: c95ed669496457245b94a76f843f0381, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.32
@@ -79962,17 +79966,17 @@ PrefabInstance:
     - target: {fileID: 8471918617486908669, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09640057
+      value: 0.096400574
       objectReference: {fileID: 0}
     - target: {fileID: 8471918617486908669, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.19140553
+      value: 0.19140555
       objectReference: {fileID: 0}
     - target: {fileID: 8471918617486908669, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.018894052
+      value: -0.018894054
       objectReference: {fileID: 0}
     - target: {fileID: 8471918617486908669, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
@@ -80032,17 +80036,17 @@ PrefabInstance:
     - target: {fileID: 8471918618568055438, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.09644006
+      value: 0.09644007
       objectReference: {fileID: 0}
     - target: {fileID: 8471918618568055438, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.01889926
+      value: -0.018899262
       objectReference: {fileID: 0}
     - target: {fileID: 8471918618568055438, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.19138011
+      value: 0.19138013
       objectReference: {fileID: 0}
     - target: {fileID: 8471918618568055438, guid: f87819f505f8c1f41899c4fd907814e6,
         type: 3}

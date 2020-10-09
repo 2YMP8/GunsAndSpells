@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-public class PlayerEngine : MonoBehaviour, Iinput
+public class PlayerEngine : MonoBehaviour //Iinput
 {
     private float _platformBoardForce;
     private Rigidbody rb;
