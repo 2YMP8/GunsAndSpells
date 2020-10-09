@@ -33,7 +33,7 @@ public class AvatarEngine : MonoBehaviour
         _speed = 0;
         _jump = 0;
         _lastTimeJumped = 0;
-        _groundCheckRadius = 0.1f;
+        _groundCheckRadius = 0.5f;
         _onClicks = 0;
         _lastTimeClicked = 0;
         _maxComboDelay = 1.5f;

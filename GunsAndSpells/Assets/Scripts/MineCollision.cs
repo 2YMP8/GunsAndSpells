@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class MineCollision : MonoBehaviour
 {
-    public GameObject explosion;
+    public GameObject explosionPrefab;
+    private GameObject _explosion;
 
+   
     // Start is called before the first frame update
     void Start()
     {
@@ -18,20 +20,17 @@ public class MineCollision : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
-            explosion.SetActive(true);
-            WaitSeconds();
-            explosion.SetActive(false);
 
+           _explosion =  Instantiate(explosionPrefab, transform.position, transform.rotation);
+
+            Destroy(_explosion, 2);
 
         }
     }
 
-    IEnumerator WaitSeconds()
-    {
-        yield return new WaitForSeconds(2);
-    }
+   
 }

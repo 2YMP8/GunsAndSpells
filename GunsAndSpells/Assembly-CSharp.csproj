@@ -146,6 +146,7 @@
     <Compile Include="Assets\Imports\SKY city lite\Standard Assets\Utility\WaypointCircuit.cs" />
     <Compile Include="Assets\Imports\SKY city lite\Standard Assets\Utility\WaypointProgressTracker.cs" />
     <Compile Include="Assets\Imports\SpeedTutor_Full_Menu_System\GUI Elements\UI_BrightnessShader\Brightness.cs" />
+    <Compile Include="Assets\InstantiateEngine.cs" />
     <Compile Include="Assets\Scripts\AgentController.cs" />
     <Compile Include="Assets\Scripts\AgentMovement.cs" />
     <Compile Include="Assets\Scripts\ComboSystem.cs" />
