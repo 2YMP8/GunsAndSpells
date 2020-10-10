@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AvatarEngine : MonoBehaviour
 {
+    #region Varables
     public Camera mainCam;
 
     private Vector3 _sides, _forward;
@@ -24,6 +25,7 @@ public class AvatarEngine : MonoBehaviour
 
     private int _onClicks;
     private float _lastTimeClicked, _maxComboDelay;
+    #endregion
 
     void Start()
     {
@@ -38,6 +40,7 @@ public class AvatarEngine : MonoBehaviour
         _lastTimeClicked = 0;
         _maxComboDelay = 1.5f;
         _maxJampDelay = 0.8f;
+
     }
 
 
@@ -96,11 +99,29 @@ public class AvatarEngine : MonoBehaviour
             _lastTimeClicked = Time.time;
             _onClicks++;
             _onClicks = Mathf.Clamp(_onClicks,0, 3);
+
+           /* if (_onClicks == 1)
+            {
+                SoundManager.PlaySound("Hit1");
+                StartCoroutine(TimerHit1());
+
+            }
+            else if (_onClicks == 2)
+            {
+               StartCoroutine(TimerHit2());
+            }
+            else if (_onClicks == 3)
+            {
+                StartCoroutine(TimerHit3());
+
+            }*/
         }
         if(Time.time - _lastTimeClicked > _maxComboDelay)
         {
             _onClicks = 0;
         }
+
+    
     }
 
     private void MovePlayer(Vector3 sidesRefrence, Vector3 forwardRefrence)
@@ -158,4 +179,24 @@ public class AvatarEngine : MonoBehaviour
     //    }
     //}
 
+    #region TimerHit
+/*    IEnumerator TimerHit1()
+    {
+        yield return new WaitForSeconds(0.8f);
+        SoundManager.PlaySound("Hit1");
+
+    }
+    IEnumerator TimerHit2()
+    {
+        yield return new WaitForSeconds(0.2f);
+        SoundManager.PlaySound("Hit2");
+
+    }
+    IEnumerator TimerHit3()
+    {
+        yield return new WaitForSeconds(0.2f);
+        SoundManager.PlaySound("Hit3");
+
+    }*/
+    #endregion
 }
