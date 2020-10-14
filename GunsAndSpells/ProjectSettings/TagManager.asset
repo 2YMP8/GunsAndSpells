@@ -7,6 +7,12 @@ TagManager:
   - Shootable
   - FireMode
   - IceMode
+  - JumpingBoard
+  - Fire
+  - RestartGame
+  - Trap
+  - Mine
+  - WeaponMode
   layers:
   - Default
   - TransparentFX
@@ -19,7 +25,7 @@ TagManager:
   - Lighting
   - Ground
   - Postprocessing
-  - 
+  - LaserSphere
   - 
   - 
   - 

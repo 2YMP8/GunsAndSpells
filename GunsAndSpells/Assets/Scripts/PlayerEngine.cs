@@ -40,12 +40,5 @@ public class PlayerEngine : MonoBehaviour //Iinput
         OnMovementInput?.Invoke(input);
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("JumpingBoard"))
-        {
-            rb.AddForce(transform.up * _platformBoardForce * Time.deltaTime);
-            print("aaa");
-        }
-    }
+  
 }
