@@ -7,6 +7,16 @@ TagManager:
   - Shootable
   - FireMode
   - IceMode
+  - JumpingBoard
+  - Fire
+  - RestartGame
+  - Trap
+  - Mine
+  - WeaponMode
+  - GraveColider
+  - FactoryColider
+  - HousesColider
+  - AidKit
   layers:
   - Default
   - TransparentFX
@@ -19,7 +29,7 @@ TagManager:
   - Lighting
   - Ground
   - Postprocessing
-  - 
+  - LaserSphere
   - 
   - 
   - 

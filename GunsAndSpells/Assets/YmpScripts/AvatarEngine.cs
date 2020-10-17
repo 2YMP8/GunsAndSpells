@@ -40,6 +40,14 @@ public class AvatarEngine : MonoBehaviour
     private string[] _powerUps = new string[3];
     public static bool powerUpsFull;
 
+    public float _platformBoardForce;
+
+    private bool fireBar;
+    private bool iceBar;
+    private float maxFire = 100;
+    private float maxIce = 100;
+    private float maxAmmo = 30;
+
     #endregion
 
     void Start()
@@ -55,6 +63,8 @@ public class AvatarEngine : MonoBehaviour
         _lastTimeClicked = 0;
         _maxComboDelay = 1.5f;
         _maxJampDelay = 0.8f;
+        _platformBoardForce = 20000;
+       
 
         _fierBallAttack = false;
         _iceLanceAttack = false;
@@ -106,7 +116,7 @@ public class AvatarEngine : MonoBehaviour
         //Jump
         if (Input.GetKeyDown(KeyCode.Space) && _jump < 2)
         {
-            _lastTimeJumped = Time.time;
+             _lastTimeJumped = Time.time;
             _jump++;
         }
         if (Time.time - _lastTimeJumped > _maxJampDelay)
@@ -123,6 +133,7 @@ public class AvatarEngine : MonoBehaviour
                 _maxComboDelay = 1.5f;
                 _onClicks++;
                 _onClicks = Mathf.Clamp(_onClicks, 0, 3);
+
             }
             else
             {
@@ -212,7 +223,7 @@ public class AvatarEngine : MonoBehaviour
     //function calld by animation
     private void MyAddForce()
     {
-        rb.AddForce(transform.up * 500);
+        rb.AddForce(transform.up * 1000);
         //rb.AddForce(transform.forward * 500);
     }
 
@@ -220,13 +231,15 @@ public class AvatarEngine : MonoBehaviour
     {
         _fierBall = Instantiate(fierBallPrefab, powerUpPoint.position, Quaternion.identity);
         _fierBall.GetComponent<Rigidbody>().AddForce(transform.forward * 300,ForceMode.Acceleration);
+        BarsEngine.fireCount--;
         Destroy(_fierBall.gameObject,2);
     }
 
     private void IceLanceFunc()
     {
         _iceLance = Instantiate(iceLancePrefab, powerUpPoint.position, transform.rotation);
-       // _iceLance.GetComponent<Rigidbody>().AddForce(transform.forward * 500, ForceMode.Acceleration);
+        // _iceLance.GetComponent<Rigidbody>().AddForce(transform.forward * 500, ForceMode.Acceleration);
+        BarsEngine.iceCount--;
         Destroy(_iceLance.gameObject, 2);
     }
     //til here.
@@ -237,10 +250,22 @@ public class AvatarEngine : MonoBehaviour
         if (other.CompareTag("FireMode"))
         {
             CheckSpaceInPowerUps("FireMode");
+            BarsEngine.fireCount = maxFire;
         }
         else if (other.CompareTag("IceMode"))
         {
             CheckSpaceInPowerUps("IceMode");
+            BarsEngine.iceCount = maxIce;
+
+        }
+        else if (other.CompareTag("WeaponMode"))
+        {
+            BarsEngine.ammoCount = maxAmmo;
+
+        }
+        else if (other.CompareTag("Trap"))
+        {
+            BarsEngine.lifeCount -= 10;
         }
     }
 
@@ -271,12 +296,14 @@ public class AvatarEngine : MonoBehaviour
                 _fightAttak = false;
                 _fierBallAttack = true;
                 _iceLanceAttack = false;
+            
                 break;
 
             case "IceMode":
                 _fightAttak = false;
                 _fierBallAttack = false;
                 _iceLanceAttack = true;
+                            
                 break;
 
             default:
@@ -313,4 +340,6 @@ public class AvatarEngine : MonoBehaviour
 
         }*/
     #endregion
+
+          
 }

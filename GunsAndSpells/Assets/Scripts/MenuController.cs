@@ -67,6 +67,7 @@ namespace SpeedTutorMainMenuSystem
         #region ImgHover
         public GameObject SpaceImg;
         public GameObject VillageImg;
+        public GameObject ZombieCityImg;
         #endregion
 
         //MAIN SECTION
@@ -179,10 +180,17 @@ namespace SpeedTutorMainMenuSystem
                 menuNumber = 7;
             }
 
-            if (buttonType == "City")
+            if (buttonType == "ZombieCity")
             {
                 chooseMap.SetActive(false);
-                SceneManager.LoadScene("City");
+                SceneManager.LoadScene("ZombieCity");
+                menuNumber = 7;
+            }
+
+            if (buttonType == "MainMenu")
+            {
+                GeneralSettingsCanvas.SetActive(false);
+                SceneManager.LoadScene("MainMenu");
                 menuNumber = 7;
             }
 
@@ -374,6 +382,11 @@ namespace SpeedTutorMainMenuSystem
             {
                 VillageImg.SetActive(true);
             }
+
+            if (ImgShow == "ZombieCityImg")
+            {
+                ZombieCityImg.SetActive(true);
+            }
         }
 
         public void ImgHide(string ImgHide)
@@ -386,6 +399,11 @@ namespace SpeedTutorMainMenuSystem
             if (ImgHide == "VillageImg")
             {
                 VillageImg.SetActive(false);
+            }
+
+            if (ImgHide == "ZombieCityImg")
+            {
+                ZombieCityImg.SetActive(false);
             }
         }
         #endregion
