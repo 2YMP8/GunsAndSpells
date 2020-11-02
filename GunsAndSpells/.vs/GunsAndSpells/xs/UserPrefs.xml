@@ -1,18 +1,10 @@
 ﻿<Properties StartupConfiguration="{08E06D99-E21E-2422-00EC-6DA979F0BADC}|">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/YmpScripts/AvatarEngine.cs">
-    <Files>
-      <File FileName="Assets/YmpScripts/AvatarEngine.cs" Line="228" Column="61" />
-      <File FileName="Assets/YmpScripts/PowerUp.cs" Line="25" Column="52" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="GunsAndSpells" expanded="True">
-            <Node name="Assets" expanded="True">
-              <Node name="YmpScripts" expanded="True">
-                <Node name="AvatarEngine.cs" selected="True" />
-              </Node>
-            </Node>
+            <Node name="Assets" expanded="True" selected="True" />
           </Node>
         </State>
       </Pad>
@@ -20,7 +12,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="64874a40-d7f6-48d8-9561-8f04ae79fa20" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="8774a6a0-3d98-4654-95e7-9949abcfe3f8" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
