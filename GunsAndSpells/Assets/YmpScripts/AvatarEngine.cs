@@ -43,7 +43,6 @@ public class AvatarEngine : MonoBehaviour
     private string[] _powerUps = new string[3];
     public static bool powerUpsFull;
 
-<<<<<<< Updated upstream
     public float _platformBoardForce;
 
     private bool fireBar;
@@ -52,7 +51,6 @@ public class AvatarEngine : MonoBehaviour
     private float maxIce = 100;
     private float maxAmmo = 30;
 
-=======
     private bool _weaponIn, _weaponOut;
     [SerializeField] private bool _weaponMode;
     public GameObject weapon;
@@ -74,7 +72,6 @@ public class AvatarEngine : MonoBehaviour
 
     public GameObject imgPower1, imgPower2,bar1,bar2;
     private int _witchBar;
->>>>>>> Stashed changes
     #endregion
 
     void Start()
@@ -95,13 +92,10 @@ public class AvatarEngine : MonoBehaviour
         _onClicks = 0;
         _lastTimeClicked = 0;
         _maxComboDelay = 1.5f;
-<<<<<<< Updated upstream
         _maxJampDelay = 0.8f;
         _platformBoardForce = 20000;
        
-=======
         _maxJampDelay = 1f;
->>>>>>> Stashed changes
 
         _powerUps[0] = "FightMode";
         _fightAttak = true;
@@ -184,12 +178,10 @@ public class AvatarEngine : MonoBehaviour
         {
             if (!_weaponMode)
             {
-<<<<<<< Updated upstream
                 _maxComboDelay = 1.5f;
                 _onClicks++;
                 _onClicks = Mathf.Clamp(_onClicks, 0, 3);
 
-=======
                 _lastTimeClicked = Time.time;
                 if (_fightAttak)
                 {
@@ -202,7 +194,6 @@ public class AvatarEngine : MonoBehaviour
                     _onClicks = 1;
                     _maxComboDelay = 0.1f;
                 }
->>>>>>> Stashed changes
             }
             else//Shooting
             {
@@ -351,10 +342,8 @@ public class AvatarEngine : MonoBehaviour
     //function calld by animation
     private void MyAddForce()
     {
-<<<<<<< Updated upstream
         rb.AddForce(transform.up * 1000);
         //rb.AddForce(transform.forward * 500);
-=======
         switch (_jump)
         {
             case 1:
@@ -365,17 +354,14 @@ public class AvatarEngine : MonoBehaviour
                 rb.AddForce(transform.up * 500);
                 break;
         }
->>>>>>> Stashed changes
     }
 
     private void ShootPower()
     {
-<<<<<<< Updated upstream
         _fierBall = Instantiate(fierBallPrefab, powerUpPoint.position, Quaternion.identity);
         _fierBall.GetComponent<Rigidbody>().AddForce(transform.forward * 300,ForceMode.Acceleration);
         BarsEngine.fireCount--;
         Destroy(_fierBall.gameObject,2);
-=======
         for (int j = 0; j <= _powerData.spells.Length; j++)
         {
             if (_powerData.spells[j].Name == _powerName)
@@ -396,7 +382,6 @@ public class AvatarEngine : MonoBehaviour
             bar2.GetComponent<Image>().fillAmount -= 0.2f;
         }
 
->>>>>>> Stashed changes
     }
 
     //private void FierBallFunc()
@@ -419,14 +404,11 @@ public class AvatarEngine : MonoBehaviour
     }
     private void HolsterRifle()
     {
-<<<<<<< Updated upstream
-        _iceLance = Instantiate(iceLancePrefab, powerUpPoint.position, transform.rotation);
+       // _iceLance = Instantiate(iceLancePrefab, powerUpPoint.position, transform.rotation);
         // _iceLance.GetComponent<Rigidbody>().AddForce(transform.forward * 500, ForceMode.Acceleration);
         BarsEngine.iceCount--;
         Destroy(_iceLance.gameObject, 2);
-=======
         weapon.SetActive(false);
->>>>>>> Stashed changes
     }
     //til here.
 
@@ -439,16 +421,12 @@ public class AvatarEngine : MonoBehaviour
         }
         else if (other.CompareTag("IceLance"))
         {
-<<<<<<< Updated upstream
             CheckSpaceInPowerUps("FireMode");
             BarsEngine.fireCount = maxFire;
-=======
             CheckSpaceInPowerUps("IceLance");
->>>>>>> Stashed changes
         }
         else if (other.CompareTag("WeaponMode"))
         {
-<<<<<<< Updated upstream
             CheckSpaceInPowerUps("IceMode");
             BarsEngine.iceCount = maxIce;
 
@@ -461,9 +439,7 @@ public class AvatarEngine : MonoBehaviour
         else if (other.CompareTag("Trap"))
         {
             BarsEngine.lifeCount -= 10;
-=======
             CheckSpaceInPowerUps("WeaponMode");
->>>>>>> Stashed changes
         }
     }
 
@@ -570,24 +546,17 @@ public class AvatarEngine : MonoBehaviour
                 _fightAttak = false;
                 _fierBallAttack = true;
                 _iceLanceAttack = false;
-<<<<<<< Updated upstream
-            
-=======
                 if (_weaponMode)
                 {
                     _weaponIn = true;
                     _weaponMode = false;
                 }
->>>>>>> Stashed changes
                 break;
 
             case "IceLance":
                 _fightAttak = false;
                 _fierBallAttack = false;
                 _iceLanceAttack = true;
-<<<<<<< Updated upstream
-                            
-=======
                 if (_weaponMode)
                 {
                     _weaponIn = true;
@@ -601,7 +570,6 @@ public class AvatarEngine : MonoBehaviour
                 _iceLanceAttack = false;
                 _weaponOut = true;
                 _weaponMode = true;
->>>>>>> Stashed changes
                 break;
 
             default:
