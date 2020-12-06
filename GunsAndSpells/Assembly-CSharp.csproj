@@ -63,6 +63,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Imports\52SpecialEffectPack\EffectEditor\ShurikenEffectEditor\csShurikenEffectChanger.cs" />
+    <Compile Include="Assets\Imports\52SpecialEffectPack\EffectEditor\ShurikenEffectEditor\csShurikenEffectEditor.cs" />
     <Compile Include="Assets\Imports\CameraShakeFX\Scripts\StressReceiver.cs" />
     <Compile Include="Assets\Imports\CameraShakeFX\Scripts\TraumaInducer.cs" />
     <Compile Include="Assets\Imports\EffectExamples\Misc Effects\Scripts\SpawnEffect.cs" />
@@ -230,7 +232,15 @@
     <Compile Include="Assets\Scripts\ZombieEngine.cs" />
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\YmpScripts\AvatarEngine.cs" />
+    <Compile Include="Assets\YmpScripts\CrossTarget.cs" />
+    <Compile Include="Assets\YmpScripts\HitCollision.cs" />
+    <Compile Include="Assets\YmpScripts\PowerEngine.cs" />
     <Compile Include="Assets\YmpScripts\PowerUp.cs" />
+    <Compile Include="Assets\YmpScripts\PowerUpClass.cs" />
+    <Compile Include="Assets\YmpScripts\PowerUpsDataBase.cs" />
+    <Compile Include="Assets\YmpScripts\RayCastWeapon.cs" />
+    <Compile Include="Assets\YmpScripts\SpellsClass.cs" />
+    <Compile Include="Assets\YmpScripts\WeaponsClass.cs" />
     <None Include="Assets\Imports\SKY city lite\Standard Assets\Effects\ImageEffects\Shaders\Tonemapper.shader" />
     <None Include="Assets\Imports\Winter_ENV\Assets\Ciconia Studio\Shaders\Double Sided Shaders\Double Sided Transparent Diffuse Bump.shader" />
     <None Include="Assets\TextMesh Pro\Resources\Shaders\TMPro.cginc" />
@@ -579,6 +589,9 @@
     </Reference>
     <Reference Include="UnityEditor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/Unity Learn 2020/2019.4.3f1/Editor/Data/Managed/UnityEditor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Burst.Unsafe">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/PackageCache/com.unity.burst@1.1.1/Unity.Burst.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/Unity Learn 2020/2019.4.3f1/Editor/Data/PlaybackEngines/AppleTVSupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
@@ -949,17 +962,26 @@
     <Reference Include="Cinemachine">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Cinemachine.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Burst.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProGrids">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.ProGrids.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VSCode.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.VSCode.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Burst.Editor">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Burst.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.ProGrids.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.ProGrids.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Animation.Rigging">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Animation.Rigging.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/UnityEngine.UI.dll</HintPath>
@@ -976,6 +998,9 @@
     <Reference Include="Unity.Rider.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Rider.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Mathematics.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.2D.Sprite.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.2D.Sprite.Editor.dll</HintPath>
     </Reference>
@@ -985,11 +1010,17 @@
     <Reference Include="Unity.2D.Tilemap.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.2D.Tilemap.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.Animation.Rigging.Editor">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Animation.Rigging.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="com.unity.cinemachine.editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/com.unity.cinemachine.editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualStudio.Editor">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.VisualStudio.Editor.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics.Editor">
+      <HintPath>/Volumes/Ytshak/GitHub/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.Mathematics.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.TextMeshPro">
       <HintPath>C:/Users/gilap/OneDrive/Desktop/GitHub Folder/GunsAndSpells/GunsAndSpells2/GunsAndSpells/GunsAndSpells/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>

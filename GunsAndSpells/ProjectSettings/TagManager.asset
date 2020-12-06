@@ -8,6 +8,7 @@ TagManager:
   - FireMode
   - IceMode
   - JumpingBoard
+<<<<<<< Updated upstream
   - Fire
   - RestartGame
   - Trap
@@ -17,6 +18,16 @@ TagManager:
   - FactoryColider
   - HousesColider
   - AidKit
+=======
+  - ActivateTrigger
+  - Enemy
+  - WeaponMode
+  - FireBall
+  - IceLance
+  - Hand
+  - FireAttak
+  - IceAttack
+>>>>>>> Stashed changes
   layers:
   - Default
   - TransparentFX

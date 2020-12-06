@@ -20,8 +20,8 @@ public class PowerUp : MonoBehaviour
     {
         if (!AvatarEngine.powerUpsFull)
         {
-            _smokeEffect = Instantiate(smokeEffectPrefab, inPosition.position, transform.rotation);
             Destroy(gameObject);
+            _smokeEffect = Instantiate(smokeEffectPrefab, inPosition.position, transform.rotation);
             Destroy(_smokeEffect.gameObject, 1.5f);
         }
     }

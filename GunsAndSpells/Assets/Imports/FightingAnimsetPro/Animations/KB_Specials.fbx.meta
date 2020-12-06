@@ -1309,7 +1309,7 @@ ModelImporter:
       curves: []
       events:
       - time: 0.1607143
-        functionName: FierBallFunc
+        functionName: ShootPower
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0
@@ -2401,8 +2401,8 @@ ModelImporter:
       bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
       curves: []
       events:
-      - time: 0.08035716
-        functionName: IceLanceFunc
+      - time: 0.2544643
+        functionName: ShootPower
         data: 
         objectReferenceParameter: {instanceID: 0}
         floatParameter: 0

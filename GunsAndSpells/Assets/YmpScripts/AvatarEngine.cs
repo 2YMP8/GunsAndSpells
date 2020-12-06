@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
+using UnityEngine.Animations.Rigging;
+using UnityEngine.UI;
 
 public class AvatarEngine : MonoBehaviour
 {
     #region Varables
-    public Camera mainCam;
+    private Camera _mainCam;
+    [SerializeField] private Transform _lookAt;
 
     private Vector3 _sides, _forward;
     private Vector3 _facingDirection;
@@ -30,16 +34,16 @@ public class AvatarEngine : MonoBehaviour
     public Transform powerUpPoint;
 
     private bool _fierBallAttack;
-    public GameObject fierBallPrefab;
-    private GameObject _fierBall;
 
     private bool _iceLanceAttack;
-    public GameObject iceLancePrefab;
-    private GameObject _iceLance;
 
+    private GameObject _powerEffect;
+
+    private string _powerName;
     private string[] _powerUps = new string[3];
     public static bool powerUpsFull;
 
+<<<<<<< Updated upstream
     public float _platformBoardForce;
 
     private bool fireBar;
@@ -48,12 +52,41 @@ public class AvatarEngine : MonoBehaviour
     private float maxIce = 100;
     private float maxAmmo = 30;
 
+=======
+    private bool _weaponIn, _weaponOut;
+    [SerializeField] private bool _weaponMode;
+    public GameObject weapon;
+
+    [SerializeField] private GameObject _aimCamera;
+    private int _priority;
+    private float _cameraX;
+    private bool _aimMode;
+
+    [SerializeField] private GameObject _fightRing;
+    [SerializeField] private Transform _ringPoint;
+    private GameObject _ringEffect;
+
+    private RayCastWeapon _weaponRay;
+    private RigBuilder _rigBuilder;
+    [SerializeField] private Transform _crossTarget;
+
+    private PowerUpsDataBase _powerData;
+
+    public GameObject imgPower1, imgPower2,bar1,bar2;
+    private int _witchBar;
+>>>>>>> Stashed changes
     #endregion
 
     void Start()
     {
+        _mainCam = Camera.main;
+
         rb = GetComponent<Rigidbody>();
         _anim = GetComponent<Animator>();
+        _weaponRay = GetComponentInChildren<RayCastWeapon>();
+        _rigBuilder = GetComponent<RigBuilder>();
+
+        _powerData = GameObject.Find("PowerUpsDataBase").GetComponent<PowerUpsDataBase>();
 
         _speed = 0;
         _jump = 0;
@@ -62,25 +95,46 @@ public class AvatarEngine : MonoBehaviour
         _onClicks = 0;
         _lastTimeClicked = 0;
         _maxComboDelay = 1.5f;
+<<<<<<< Updated upstream
         _maxJampDelay = 0.8f;
         _platformBoardForce = 20000;
        
-
-        _fierBallAttack = false;
-        _iceLanceAttack = false;
-        _fightAttak = true;
+=======
+        _maxJampDelay = 1f;
+>>>>>>> Stashed changes
 
         _powerUps[0] = "FightMode";
+        _fightAttak = true;
+        _fierBallAttack = false;
+        _iceLanceAttack = false;
+        _weaponMode = false;
+
         powerUpsFull = false;
+
+        _priority = 0;
+        _aimMode = false;
     }
 
 
     void Update()
-    {  
+    {
         InputControl();
-        if (_inputSides != 0 || _inputForward != 0)
-            MovePlayer(mainCam.transform.right, mainCam.transform.forward);
         AnimationControl();
+        //MoveAimMode();
+    }
+
+    private void FixedUpdate()
+    {
+        //if (!_aimMode)
+        //{
+        //    MovePlayer(_mainCam.transform.right, _mainCam.transform.forward);
+        //}
+        //else
+        //{
+        //    MovePlayer(transform.right, transform.forward);
+        //}
+
+        MovePlayer();
     }
 
     private void LateUpdate()
@@ -91,7 +145,8 @@ public class AvatarEngine : MonoBehaviour
     private void InputControl()
     {
         _inputMouseX = Input.GetAxis("Mouse X");
-        _inputMouseY = Input.GetAxis("Mouse Y");
+        // _inputMouseY = Input.GetAxis("Mouse Y");
+        _inputMouseY = _mainCam.transform.rotation.eulerAngles.y;
 
         _inputSides = Input.GetAxis("Horizontal");
         _inputForward = Input.GetAxis("Vertical");
@@ -127,20 +182,32 @@ public class AvatarEngine : MonoBehaviour
         //Attack
         if (Input.GetMouseButtonDown(0))
         {
-            _lastTimeClicked = Time.time;
-            if (_fightAttak)
+            if (!_weaponMode)
             {
+<<<<<<< Updated upstream
                 _maxComboDelay = 1.5f;
                 _onClicks++;
                 _onClicks = Mathf.Clamp(_onClicks, 0, 3);
 
+=======
+                _lastTimeClicked = Time.time;
+                if (_fightAttak)
+                {
+                    _maxComboDelay = 1.5f;
+                    _onClicks++;
+                    _onClicks = Mathf.Clamp(_onClicks, 0, 3);
+                }
+                else
+                {
+                    _onClicks = 1;
+                    _maxComboDelay = 0.1f;
+                }
+>>>>>>> Stashed changes
             }
-            else
+            else//Shooting
             {
-                _onClicks = 1;
-                _maxComboDelay = 0.1f;
+                _weaponRay.StartFiring();
             }
-
 
            /* if (_onClicks == 1)
             {
@@ -163,6 +230,27 @@ public class AvatarEngine : MonoBehaviour
             _onClicks = 0;
         }
 
+        if (Input.GetMouseButtonDown(1))
+        {
+            switch (_priority)
+            {
+                case 0:
+                    _aimCamera.GetComponent<CinemachineFreeLook>().Priority = 20;
+                    _priority = 20;
+                    //_aimPoint.SetActive(true);
+                    _aimMode = true;
+                    break;
+
+                case 20:
+                    _aimCamera.GetComponent<CinemachineFreeLook>().Priority = 0 ;
+                    _priority = 0;
+                    //_aimPoint.SetActive(false);
+                    _aimMode = false;
+                    break;
+            }
+        }
+           
+
         if (Input.GetKeyDown(KeyCode.Alpha1))//Fight combo
         {
             ModeSwitch(0);
@@ -178,17 +266,40 @@ public class AvatarEngine : MonoBehaviour
 
     }
 
-    private void MovePlayer(Vector3 sidesRefrence, Vector3 forwardRefrence)
+    //private void MovePlayer(Vector3 sidesRefrence, Vector3 forwardRefrence)
+    //{
+    //    _sides = sidesRefrence * _inputSides;
+    //    _forward = forwardRefrence * _inputForward;
+
+    //    _facingDirection = _sides + _forward;
+    //    _facingDirection.y = 0;
+    //    _facingDirection.Normalize();
+
+
+    //    Quaternion rotationTarget = Quaternion.LookRotation(_facingDirection);
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, rotationTarget, Time.deltaTime * 2.8f);
+
+    //    transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, _inputMouseY, 0), 15 * Time.fixedDeltaTime);
+    
+    //}
+
+    private void MovePlayer()
     {
-        _sides = sidesRefrence * _inputSides;
-        _forward = forwardRefrence * _inputForward;
 
-        _facingDirection = _sides + _forward;
-        _facingDirection.y = 0;
-        _facingDirection.Normalize();
+        _facingDirection = _crossTarget.position - powerUpPoint.position;
 
-        Quaternion rotationTarget = Quaternion.LookRotation(_facingDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotationTarget, Time.deltaTime * 2.8f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, _inputMouseY, 0), 15 * Time.fixedDeltaTime);
+
+    }
+
+    private void MoveAimMode()
+    {
+        transform.Rotate(0, _inputMouseX * 50 * Time.deltaTime, 0);
+
+        //Look Up & Down
+        _cameraX = _cameraX - (_inputMouseY * 50 / 2 * Time.deltaTime);
+        _cameraX = Mathf.Clamp(_cameraX, -30, 30);
+        _aimCamera.transform.localRotation = Quaternion.Euler(_cameraX, 0, 0);
     }
 
     private void AnimationControl()
@@ -207,7 +318,24 @@ public class AvatarEngine : MonoBehaviour
             _anim.SetBool("OneTwo", true);
         }
         _anim.SetBool("FierBallAttack", _fierBallAttack);
-        _anim.SetBool("IceLanceAttack", _iceLanceAttack); 
+        _anim.SetBool("IceLanceAttack", _iceLanceAttack);
+ 
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("EquipRifle"))
+        {
+            _weaponOut = false;
+        }
+        _anim.SetBool("WeaponOut", _weaponOut);
+
+        if (_anim.GetCurrentAnimatorStateInfo(0).IsName("HolsterRifle"))
+        {
+            _weaponIn = false;
+        }
+        _anim.SetBool("WeaponIn", _weaponIn);
+
+        //Aim walk
+        _anim.SetFloat("InputForward", _inputForward);
+        _anim.SetFloat("InputSide", _inputSides);
+        _anim.SetBool("AimMode", _aimMode);
     }
 
     private void CheckIsGrounded()
@@ -216,44 +344,111 @@ public class AvatarEngine : MonoBehaviour
 
         if (!_isGrounded)
         {
-            transform.Translate(0, 0, Mathf.Abs(_inputForward) * 2 * Time.deltaTime);
+            transform.Translate(_inputSides * 3 * Time.deltaTime, 0, Mathf.Abs(_inputForward) * 5 * Time.deltaTime);
         }
     }
 
     //function calld by animation
     private void MyAddForce()
     {
+<<<<<<< Updated upstream
         rb.AddForce(transform.up * 1000);
         //rb.AddForce(transform.forward * 500);
+=======
+        switch (_jump)
+        {
+            case 1:
+                rb.AddForce(transform.up * 250);
+                break;
+
+            case 2:
+                rb.AddForce(transform.up * 500);
+                break;
+        }
+>>>>>>> Stashed changes
     }
 
-    private void FierBallFunc()
+    private void ShootPower()
     {
+<<<<<<< Updated upstream
         _fierBall = Instantiate(fierBallPrefab, powerUpPoint.position, Quaternion.identity);
         _fierBall.GetComponent<Rigidbody>().AddForce(transform.forward * 300,ForceMode.Acceleration);
         BarsEngine.fireCount--;
         Destroy(_fierBall.gameObject,2);
+=======
+        for (int j = 0; j <= _powerData.spells.Length; j++)
+        {
+            if (_powerData.spells[j].Name == _powerName)
+            {
+                _powerEffect = Instantiate(_powerData.spells[j].power, powerUpPoint.position, transform.rotation);
+                _powerEffect.transform.LookAt(_facingDirection);
+                _powerEffect.GetComponent<PowerEngine>().SaveDirection(_facingDirection);
+                Destroy(_powerEffect.gameObject, 2);
+                break;
+            }
+        }
+        if(_witchBar == 1)
+        {
+            bar1.GetComponent<Image>().fillAmount -= 0.2f;
+        }
+        else if(_witchBar == 2)
+        {
+            bar2.GetComponent<Image>().fillAmount -= 0.2f;
+        }
+
+>>>>>>> Stashed changes
     }
 
-    private void IceLanceFunc()
+    //private void FierBallFunc()
+    //{
+    //    _fierBall = Instantiate(fierBallPrefab, powerUpPoint.position, Quaternion.identity);
+    //    _fierBall.GetComponent<PowerEngine>().SaveDirection(_facingDirection);
+    //    Destroy(_fierBall.gameObject,2);
+    //}
+
+    //private void IceLanceFunc()
+    //{
+    //    _iceLance = Instantiate(iceLancePrefab, powerUpPoint.position, transform.rotation);
+    //    _iceLance.GetComponent<PowerEngine>().SaveDirection(_facingDirection);
+    //    Destroy(_iceLance.gameObject, 2);
+    //}
+
+    private void EquipRifle()
     {
+        weapon.SetActive(true);
+    }
+    private void HolsterRifle()
+    {
+<<<<<<< Updated upstream
         _iceLance = Instantiate(iceLancePrefab, powerUpPoint.position, transform.rotation);
         // _iceLance.GetComponent<Rigidbody>().AddForce(transform.forward * 500, ForceMode.Acceleration);
         BarsEngine.iceCount--;
         Destroy(_iceLance.gameObject, 2);
+=======
+        weapon.SetActive(false);
+>>>>>>> Stashed changes
     }
     //til here.
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FireMode"))
+        if (other.CompareTag("FireBall"))
         {
+            CheckSpaceInPowerUps("FireBall");
+        }
+        else if (other.CompareTag("IceLance"))
+        {
+<<<<<<< Updated upstream
             CheckSpaceInPowerUps("FireMode");
             BarsEngine.fireCount = maxFire;
+=======
+            CheckSpaceInPowerUps("IceLance");
+>>>>>>> Stashed changes
         }
-        else if (other.CompareTag("IceMode"))
+        else if (other.CompareTag("WeaponMode"))
         {
+<<<<<<< Updated upstream
             CheckSpaceInPowerUps("IceMode");
             BarsEngine.iceCount = maxIce;
 
@@ -266,6 +461,9 @@ public class AvatarEngine : MonoBehaviour
         else if (other.CompareTag("Trap"))
         {
             BarsEngine.lifeCount -= 10;
+=======
+            CheckSpaceInPowerUps("WeaponMode");
+>>>>>>> Stashed changes
         }
     }
 
@@ -274,42 +472,143 @@ public class AvatarEngine : MonoBehaviour
         if (_powerUps[1] == null)
         {
             _powerUps[1] = power;
+            if (power != "WeaponMode")
+            {
+                for (int j = 0; j <= _powerData.spells.Length; j++)
+                {
+                    if (_powerData.spells[j].Name == power)
+                    {
+                        imgPower1.GetComponent<Image>().sprite = _powerData.spells[j].icon;
+                        imgPower1.SetActive(true);
+                        bar1.SetActive(true);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                imgPower1.GetComponent<Image>().sprite = _powerData.weapons[0].icon;
+                imgPower1.SetActive(true);
+                bar1.SetActive(true);
+            }
         }
         else if(_powerUps[2] == null)
         {
             _powerUps[2] = power;
             powerUpsFull = true;
+            if (power != "WeaponMode")
+            {
+                for (int j = 0; j <= _powerData.spells.Length; j++)
+                {
+                    if (_powerData.spells[j].Name == power)
+                    {
+                        imgPower2.GetComponent<Image>().sprite = _powerData.spells[j].icon;
+                        imgPower2.SetActive(true);
+                        bar2.SetActive(true);
+                        break;
+                    }
+                }
+            }
+            else
+            {
+                imgPower2.GetComponent<Image>().sprite = _powerData.weapons[0].icon;
+                imgPower2.SetActive(true);
+                bar2.SetActive(true);
+            }
         }
     }
 
     private void ModeSwitch(int i)
     {
+        _witchBar = i;
+        if (_powerUps[i] == "WeaponMode")
+        {
+            _rigBuilder.enabled = true;
+            for (int j = 0; j <= _powerData.weapons.Length; j++)
+            {
+                if (_powerData.weapons[j].Name == "M16A4")
+                {
+                    //_powerName = _powerData.weapons[j].Name;
+                    _ringEffect = Instantiate(_powerData.weapons[j].ringEffect, _ringPoint.position, Quaternion.identity);
+                    Destroy(_ringEffect, 2);
+                    break;
+                }
+            }
+        }
+        else if(_powerUps[i] != "FightMode")
+        {
+            _rigBuilder.enabled = false;
+            for (int j = 0; j <= _powerData.spells.Length; j++)
+            {
+                if (_powerData.spells[j].Name == _powerUps[i])
+                {
+                    _powerName = _powerData.spells[j].Name;
+                    _ringEffect = Instantiate(_powerData.spells[j].ringEffect, _ringPoint.position, Quaternion.identity);
+                    Destroy(_ringEffect, 2);
+                    break;
+                }
+            }
+        }
+
+
         switch (_powerUps[i])
         {
             case "FightMode":
                 _fightAttak = true;
                 _fierBallAttack = false;
                 _iceLanceAttack = false;
+                if (_weaponMode)
+                {
+                    _weaponIn = true;
+                    _weaponMode = false;
+                }
+                _ringEffect = Instantiate(_fightRing, _ringPoint.position, Quaternion.identity);
+                Destroy(_ringEffect, 2);
                 break;
 
-            case "FireMode":
+            case "FireBall":
                 _fightAttak = false;
                 _fierBallAttack = true;
                 _iceLanceAttack = false;
+<<<<<<< Updated upstream
             
+=======
+                if (_weaponMode)
+                {
+                    _weaponIn = true;
+                    _weaponMode = false;
+                }
+>>>>>>> Stashed changes
                 break;
 
-            case "IceMode":
+            case "IceLance":
                 _fightAttak = false;
                 _fierBallAttack = false;
                 _iceLanceAttack = true;
+<<<<<<< Updated upstream
                             
+=======
+                if (_weaponMode)
+                {
+                    _weaponIn = true;
+                    _weaponMode = false;
+                }
+                break;
+
+            case "WeaponMode":
+                _fightAttak = false;
+                _fierBallAttack = false;
+                _iceLanceAttack = false;
+                _weaponOut = true;
+                _weaponMode = true;
+>>>>>>> Stashed changes
                 break;
 
             default:
                 break;
         }
     }
+
 
     //private void OnCollisionEnter(Collision collision)
     //{
