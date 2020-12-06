@@ -12,9 +12,10 @@ GameObject:
   - component: {fileID: 8008950056680165603}
   - component: {fileID: 8007815047912760863}
   - component: {fileID: -2113132279622800867}
+  - component: {fileID: 2891125678736757708}
   m_Layer: 0
   m_Name: FireBall
-  m_TagString: Untagged
+  m_TagString: FireBall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4772,6 +4773,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
+--- !u!135 &2891125678736757708
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7918058222594189769}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.75248414
+  m_Center: {x: 0, y: 6.9816267e-16, z: 0.25248423}
 --- !u!1 &7918122177035371009
 GameObject:
   m_ObjectHideFlags: 0

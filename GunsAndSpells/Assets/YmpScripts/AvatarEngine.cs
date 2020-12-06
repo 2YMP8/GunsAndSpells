@@ -265,6 +265,7 @@ public class AvatarEngine : MonoBehaviour
         }
         else if (other.CompareTag("Trap"))
         {
+            SoundManager.sndmng.PlayPainHits();
             BarsEngine.lifeCount -= 10;
         }
     }

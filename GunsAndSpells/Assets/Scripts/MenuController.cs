@@ -21,6 +21,12 @@ namespace SpeedTutorMainMenuSystem
         private string levelToLoad;
 
         private int menuNumber;
+
+        public GameObject space;
+        public GameObject village;
+        public GameObject zombieCity;
+
+
         #endregion
 
         #region Menu Dialogs
@@ -37,8 +43,6 @@ namespace SpeedTutorMainMenuSystem
         [SerializeField] private GameObject noSaveDialog;
         [SerializeField] private GameObject newGameDialog;
         [SerializeField] private GameObject loadGameDialog;
-        [SerializeField] private GameObject chooseMap;
-
         #endregion
 
         #region Slider Linking
@@ -61,13 +65,8 @@ namespace SpeedTutorMainMenuSystem
         private void Start()
         {
             menuNumber = 1;
+       
         }
-        #endregion
-
-        #region ImgHover
-        public GameObject SpaceImg;
-        public GameObject VillageImg;
-        public GameObject ZombieCityImg;
         #endregion
 
         //MAIN SECTION
@@ -158,40 +157,88 @@ namespace SpeedTutorMainMenuSystem
                 menuNumber = 8;
             }
 
-            if (buttonType == "NewGame")
+            if (buttonType == "CreateGame")
             {
-                menuDefaultCanvas.SetActive(false);
-                chooseMap.SetActive(true);
-                menuNumber = 7;
+                /*   menuDefaultCanvas.SetActive(false);
+                   newGameDialog.SetActive(true);
+                   menuNumber = 7;*/
+
+                SceneManager.LoadScene("PlayerChoose");
             }
 
+            if(buttonType == "BackToMenu")
+            {
+                SceneManager.LoadScene("MainMenu");
+
+            }
+
+            if(buttonType == "BackToPlayerChoose")
+            {
+                SceneManager.LoadScene("PlayerChoose");
+
+            }
+            
+            if(buttonType == "Space")
+            {
+                SceneManager.LoadScene("Space");
+
+            }  
+            
+            if(buttonType == "Village")
+            {
+                SceneManager.LoadScene("Village");
+
+            } 
+            
+            if(buttonType == "ZombieCity")
+            {
+                SceneManager.LoadScene("ZombieCity");
+
+            }
+
+
+        }
+        #endregion    
+        
+        #region Menu Mouse Hover
+        public void MouseEnter(string buttonType)
+        {
             if (buttonType == "Space")
             {
-                chooseMap.SetActive(false);
-                SceneManager.LoadScene("Space");
-                menuNumber = 7;
+                space.SetActive(true);
+                
             }
-
-
+            
             if (buttonType == "Village")
             {
-                chooseMap.SetActive(false);
-                SceneManager.LoadScene("Village");
-                menuNumber = 7;
+                village.SetActive(true);
             }
-
+            
             if (buttonType == "ZombieCity")
             {
-                chooseMap.SetActive(false);
-                SceneManager.LoadScene("ZombieCity");
-                menuNumber = 7;
+               
+                zombieCity.SetActive(true);
             }
 
-            if (buttonType == "MainMenu")
+        }   public void MouseExit(string buttonType)
+        {
+            if (buttonType == "Space")
             {
-                GeneralSettingsCanvas.SetActive(false);
-                SceneManager.LoadScene("MainMenu");
-                menuNumber = 7;
+                space.SetActive(false);
+    
+            }
+            
+            if (buttonType == "Village")
+            {
+              
+                village.SetActive(false);
+          
+            }
+            
+            if (buttonType == "ZombieCity")
+            {
+             
+                zombieCity.SetActive(false);
             }
 
         }
@@ -330,8 +377,6 @@ namespace SpeedTutorMainMenuSystem
             graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
             gameplayMenu.SetActive(false);
-            chooseMap.SetActive(false);
-
 
             GameplayApply();
             BrightnessApply();
@@ -350,7 +395,6 @@ namespace SpeedTutorMainMenuSystem
             graphicsMenu.SetActive(false);
             soundMenu.SetActive(false);
             gameplayMenu.SetActive(false);
-            chooseMap.SetActive(false);
             menuNumber = 1;
         }
 
@@ -369,42 +413,6 @@ namespace SpeedTutorMainMenuSystem
         public void ClickNoSaveDialog()
         {
             GoBackToMainMenu();
-        }
-
-        public void ImgShow(string ImgShow)
-        {
-            if (ImgShow == "SpaceImg")
-            {
-                SpaceImg.SetActive(true);
-            }
-
-            if (ImgShow == "VillageImg")
-            {
-                VillageImg.SetActive(true);
-            }
-
-            if (ImgShow == "ZombieCityImg")
-            {
-                ZombieCityImg.SetActive(true);
-            }
-        }
-
-        public void ImgHide(string ImgHide)
-        {
-            if (ImgHide == "SpaceImg")
-            {
-                SpaceImg.SetActive(false);
-            }
-
-            if (ImgHide == "VillageImg")
-            {
-                VillageImg.SetActive(false);
-            }
-
-            if (ImgHide == "ZombieCityImg")
-            {
-                ZombieCityImg.SetActive(false);
-            }
         }
         #endregion
     }

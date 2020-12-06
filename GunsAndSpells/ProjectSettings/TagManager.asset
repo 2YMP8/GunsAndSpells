@@ -17,6 +17,7 @@ TagManager:
   - FactoryColider
   - HousesColider
   - AidKit
+  - FireBall
   layers:
   - Default
   - TransparentFX
@@ -30,7 +31,7 @@ TagManager:
   - Ground
   - Postprocessing
   - LaserSphere
-  - 
+  - Player
   - 
   - 
   - 

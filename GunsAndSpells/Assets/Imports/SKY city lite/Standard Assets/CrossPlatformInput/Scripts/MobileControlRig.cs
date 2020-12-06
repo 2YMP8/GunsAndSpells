@@ -21,9 +21,8 @@ namespace UnityStandardAssets.CrossPlatformInput
 	{
 		CheckEnableControlRig();
 	}
-#endif
+	#endif
 
-        [Obsolete]
         private void Start()
         {
 #if UNITY_EDITOR
@@ -38,25 +37,27 @@ namespace UnityStandardAssets.CrossPlatformInput
 
                     o.AddComponent<UnityEngine.EventSystems.EventSystem>();
                     o.AddComponent<UnityEngine.EventSystems.StandaloneInputModule>();
-                    o.AddComponent<UnityEngine.EventSystems.TouchInputModule>();
                 }
             }
         }
 
 #if UNITY_EDITOR
 
-        [Obsolete]
         private void OnEnable()
-        {
-            EditorUserBuildSettings.activeBuildTargetChanged += Update;
-            EditorApplication.update += Update;
+		{
+#pragma warning disable CS0618 // Type or member is obsolete
+			EditorUserBuildSettings.activeBuildTargetChanged += Update;
+#pragma warning restore CS0618 // Type or member is obsolete
+			EditorApplication.update += Update;
         }
 
-        [Obsolete]
+
         private void OnDisable()
-        {
-            EditorUserBuildSettings.activeBuildTargetChanged -= Update;
-            EditorApplication.update -= Update;
+		{
+#pragma warning disable CS0618 // Type or member is obsolete
+			EditorUserBuildSettings.activeBuildTargetChanged -= Update;
+#pragma warning restore CS0618 // Type or member is obsolete
+			EditorApplication.update -= Update;
         }
 
 
