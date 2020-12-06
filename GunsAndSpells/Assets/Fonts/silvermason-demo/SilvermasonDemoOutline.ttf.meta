@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: 9c3bf46b3f53cbb438552decec51cb71
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Silvermason Demo
+  fontNames:
+  - Silvermason Demo
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 357b80627d4e90f49b183f2e17a274c9, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

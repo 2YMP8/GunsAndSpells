@@ -42,10 +42,6 @@ namespace UnityEngine.PostProcessing
         // Height of the 35mm full-frame format (36mm x 24mm)
         const float k_FilmHeight = 0.024f;
 
-        public DepthOfFieldComponent()
-        {
-        }
-
         float CalculateFocalLength()
         {
             var settings = model.settings;
